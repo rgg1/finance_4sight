@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+    <link rel="stylesheet" href="/static/fin_app/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Results</h1>
+        <div class="articles">
+            {% for article in articles %}
+                <p>
+                    <a href="{{ article.url }}" target="_blank" rel="noopener">{{ article.title }}</a>
+                    <span class="sentiment-{{ article.sentiment }}">({{ article.sentiment }})</span>
+                </p>
+            {% endfor %}
+        </div>
+        <div class="sentiments">
+            <p>Positive articles: {{ sentiment_counts.positive }}</p>
+            <p>Neutral articles: {{ sentiment_counts.neutral }}</p>
+            <p>Negative articles: {{ sentiment_counts.negative }}</p>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChart"></canvas>
+        </div>
+        <button class="new-search-btn" onclick="window.location.href='{% url 'home' %}'">New Search</button>
+    </div>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Positive', 'Neutral', 'Negative'],
+                datasets: [{
+                    data: [{{ sentiment_counts.positive }}, {{ sentiment_counts.neutral }}, {{ sentiment_counts.negative }}],
+                    backgroundColor: [
+                        'rgb(75, 192, 192)',  // color for Positive
+                        'rgb(255, 205, 86)',  // color for Neutral
+                        'rgb(255, 99, 132)'   // color for Negative
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

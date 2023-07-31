@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    color: #f0f0f0;
+    text-align: center;
+}
+
+h4 {
+    color: #f0f0f0;
+    text-align: center;
+}
+
+#search-form {
+    max-width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+input[type="text"] {
+    font-size: 18px;
+    padding: 15px;
+    width: 100%;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 18px;
+    padding: 13px 22px;
+    border: none;
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #666;
+}
+
+.new-search-btn {
+    font-size: 18px;
+    padding: 15px 25px;
+    display: block;
+    margin: 20px auto;
+}
+
+#error-message {
+    display: none;
+    color: #a180cc;
+    text-align: center;
+}
+
+.articles {
+    line-height: 1.5;
+    text-align: center;
+}
+
+.articles a {
+    color: #88aaff;
+    text-decoration: none;
+}
+
+.articles a:hover {
+    text-decoration: underline;
+}
+
+.sentiments {
+    text-align: center;
+    font-size: 18px;
+}
+
+.chart-container {
+    width: 400px;
+    margin: 20px auto;
+}
+
+.sentiment-positive {
+    color: rgb(97, 218, 182);
+}
+
+.sentiment-neutral {
+    color: rgb(232, 227, 83);
+}
+
+.sentiment-negative {
+    color: rgb(242, 104, 77);
+}

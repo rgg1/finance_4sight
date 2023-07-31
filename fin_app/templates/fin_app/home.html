@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FinanceForesight</title>
+    <link rel="stylesheet" href="/static/fin_app/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+</head>
+<body>
+    <div class="container">
+        <h1>FinanceForesight</h1>
+        <h4>
+            Start typing to search for a company from the dropdown. Upon pressing search, you'll be shown
+            numerous articles from the last week regarding financial news about the company. Each article 
+            will be run through a sentiment analysis model to evaluate whether it is negative, neutral,
+            or positive (from the perspective of the company's future financial performance).
+        </h4>
+        <form id="search-form" action="{% url 'results' %}" method="GET">
+            <input type="text" name="query" id="search" placeholder="Enter company name or ticker" required>
+            <button type="submit">Search</button>
+        </form>
+        <p id="error-message">Please select a company from the dropdown.</p>
+    </div>
+    <script>
+        var selected = false;
+
+        $( "#search" ).autocomplete({
+            source: "{% url 'autocomplete' %}",
+            select: function (event, ui) {
+                selected = true;
+            }
+        });
+
+        $("#search-form").on('submit', function(e) {
+            if (!selected) {
+                e.preventDefault();
+                $("#error-message").show();
+            }
+        });
+
+        // Reset the selected variable if the input value is changed after a selection
+        $("#search").on('change', function() {
+            if (selected) {
+                selected = false;
+            }
+        });
+    </script>
+</body>
+</html>
