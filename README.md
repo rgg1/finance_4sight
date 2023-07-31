@@ -8,15 +8,15 @@ model for sentiment analysis. How it works is that a user can search for a compa
 This project makes use of the Bing News Search API to search for news articles from the last week that are related to
 the company. The model was trained and fine-tuned using PyTorch. The model's state is then loaded in from an S3 bucket and used to predict sentiment given the article titles that populate from the Bing API results. 
 
-The model itself was able to obtain an accuracy of over 95 % on our test dataset. The fine-tuning consists of
-5,000 financial news article titles labeled with a sentiment, and 100,000 more titles that were labeled using
-another pretrained financial sentiment model.
-
 Citation for the pretrained model:
 
 Huang, Allen H., Hui Wang, and Yi Yang. "FinBERT: A Large Language Model for Extracting Information from Financial Text." Contemporary Accounting Research (2022).
 
 Yang, Yi, Mark Christopher Siy Uy, and Allen Huang. "Finbert: A pretrained language model for financial communications." arXiv preprint arXiv:2006.08097 (2020).
+
+The model itself was able to obtain an accuracy of over 95 % on our test dataset. The fine-tuning consists of
+5,000 financial news article titles labeled with a sentiment, and 3,000 more titles that were labeled using
+another financial sentiment model called FinBERT by ProsusAI (our "teacher model").
 
 ## Installation
 
