@@ -3,7 +3,10 @@
 ## Description
 
 This is a web app I made that is currently hosted at https://finance4sight.com, which makes use of a machine learning 
-model for sentiment analysis. How it works is that a user can search for a company from the dropdown and upon clicking "Search", be shown numerous articles that pertain to that company and its finances, as well as their predicted sentiment.
+model for sentiment analysis. Update: In April of 2024, the services were paused due to costs, and may eventually be live
+again in the future. Everything discussed below was true prior to April 2024 when the website was still being hosted live on AWS.
+
+How it works is that a user can search for a company from the dropdown and upon clicking "Search", be shown numerous articles that pertain to that company and its finances, as well as their predicted sentiment.
 
 This project makes use of the Bing News Search API to search for news articles from the last week that are related to
 the company. The model was trained and fine-tuned using PyTorch. The model's state is then loaded in from an S3 bucket and used to predict sentiment given the article titles that populate from the Bing API results. 
